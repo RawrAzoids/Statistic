@@ -9,6 +9,40 @@
 #include <string>
 #include <queue>
 
+namespace statFo // stat types
+{
+	enum statFo {none, strength, stamina, intellect, agility, dexterity, armor, speed, luck, charisma, perception, weight, critcal, 
+		evade, block, charm, detect, hit, miss, distance, combat, damage, resource, modifier};
+}
+namespace numFo // Amount types
+{
+	enum numFo {none, base, bonus, total, current, percent, lower, upper, min, max, size};
+}
+namespace distFo // Distance Types
+{
+	enum distFo {none, combat, travel, vision, detect};
+}
+namespace combFo // Damage and Defense Types
+{
+	enum combFo {none, melee, range, spell, chemical, fusion};
+}
+namespace attFo
+{
+	enum attFo {none, fire, ice, water, wind, earth, nature, electric, holy, dark, heal, pierce, smash, slash, };
+}
+namespace defFo
+{
+	enum defFo {none, block, parry, evade, reduct, hit, miss, absorb, invincible};
+}
+namespace rsrcFo // Resource Types (mana types 
+{
+	enum rsrcFo {none, health, mana, energy};
+}
+namespace weapFo
+{
+	enum weapFo {none, };
+}
+
 const int STRING_LENGTH = 100;
 struct statFusion
 {
