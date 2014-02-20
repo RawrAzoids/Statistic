@@ -25,7 +25,7 @@ struct minMaxStat
 struct specialStatFndtn
 {
 	minMaxStat amount;
-	statTotal plain, chance;
+	statTotal basic, chance;
 };
 struct specialStatInfo
 {
@@ -35,7 +35,7 @@ struct specialStatInfo
 struct distanceStatFndtn
 {
 	minMaxStat amount;
-	statTotal plain;
+	statTotal basic;
 };
 struct distanceStatInfo
 {
@@ -46,13 +46,13 @@ struct damageStatFndtn
 {
 	specialStatInfo critical, hit, miss, injure, effect;
 	minMaxStat amount;
-	statTotal plain; 
+	statTotal basic; 
 };
 struct defenseStatFndtn
 {
 	specialStatInfo block, parry, evade, counter;
 	minMaxStat amount;
-	statTotal plain; 
+	statTotal basic; 
 };
 struct combatStatFndtn
 {
