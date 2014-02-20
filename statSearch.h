@@ -49,8 +49,8 @@ namespace weapFo
 }
 namespace armFo
 {
-	enum armFo {none, shield, trinket, ring, helmet, cape, leggings, torso, underwear, shirt, 
-	gloves, bracers, necklace};
+	enum armFo {none, socks, underwear, undershirt, trinket, ring, necklace, cape, helmet, leggings, body, 
+	gloves, bracers, shoulders};
 }
 
 const int STRING_LENGTH = 100;
