@@ -45,12 +45,14 @@ struct distanceStatInfo
 struct damageStatFndtn
 {
 	specialStatInfo critical, hit, miss, injure, effect;
+	std::list<specialStatInfo> custom;
 	minMaxStat amount;
 	statTotal basic; 
 };
 struct defenseStatFndtn
 {
 	specialStatInfo block, parry, evade, counter;
+	std::list<specialStatInfo> custom;
 	minMaxStat amount;
 	statTotal basic; 
 };
@@ -65,24 +67,35 @@ struct combatStatInfo
 	bool enable;
 };
 struct baseStats
-{		// gives two stats for similar things (strength brown),(stamina and fortitude)...
-	baseStatInfo strength, brawn, stamina, fortitude, intellect, wisdom, agility, dexterity, speed, quickness, luck, fate, charisma, social, perception, alertness, mass, weight, *custom;
+{		// Gives two stats for similar things (strength brown),(stamina and fortitude)...
+	baseStatInfo strength, brawn, stamina, fortitude, intellect, wisdom, agility, 
+	dexterity, speed, quickness, luck, fate, charisma, social, perception, alertness, mass;
+	std::list<baseStatInfo> custom;
 };
 struct resourceStats
-{   // Gives two stats for similar things (health vitality),(mana psych)...
-	baseStatInfo health, vitality, mana, psyche, energy, endurance, points, score, *custom;
+		 // Gives two stats for similar things (health vitality),(mana psych)...
+	baseStatInfo health, vitality, mana, psyche, energy, endurance, points, score;
+	std::list<baseStatInfo> custom;
 };
 struct specialStat
 {
-	specialStatInfo fortune, detect, sneak, charm, *custom;
+	specialStatInfo fortune, detect, sneak, charm;
+	std::list<specialStatInfo> custom;
 };
 struct combatStat
 {
-	combatStatInfo melee, range, spell, chemical, *custom;
+	combatStatInfo melee, range, spell, chemical;
+	std::list<combatStatInfo> custom;
 };
 struct distanceStat
 {
-	distanceStatInfo melee, range, spell, chemical, vision, travel, detect, *custom;
+	distanceStatInfo melee, range, spell, chemical, vision, travel, detect;
+	std::list<distanceStatInfo> custom;
+};
+struct weaponStat
+{
+	baseStatInfo dagger, sword, spear, axe, mace, bow, gun, crossbow;
+	std::list<baseStatInfo> custom;
 };
 class stats
 {
