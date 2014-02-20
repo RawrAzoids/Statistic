@@ -9,6 +9,8 @@
 #include <string>
 #include <queue>
 
+const int SEARCH_MAX = 1;
+const int FUSION_MAX = 2;
 namespace statFo // stat types
 {
 	enum statFo {none, strength, stamina, intellect, agility, dexterity, armor, speed, luck, charisma, perception, weight, critcal, 
@@ -63,13 +65,13 @@ class statSearch // All enums to search for what type of stat you are talking ab
 {
 private:
 	std::string name, description; // the description up for your own use
-	statFo::statFo statistic; // The general type of stat. (agility, strength, combat, distance...)
-	distFo::distFo distance; // The general type of distance. If not distance leave as none.
-	magicFo::magicFo magic; // The general type of magic used. If not magic leave as none.
-	numFo::numFo amount; // The general type of number. (ex: bonus, current, max...)
-	combFo::combFo combat; // Type of combat used. If not combat leave as none.
-	weapFo::weapFo weapon; // General type of weapon used. If not combat leave as none.
-	rsrcFo::rsrcFo resource;
+	statFo::statFo *statistic; // The general type of stat. (agility, strength, combat, distance...)
+	distFo::distFo *distance; // The general type of distance. If not distance leave as none.
+	magicFo::magicFo *magic; // The general type of magic used. If not magic leave as none.
+	numFo::numFo *amount; // The general type of number. (ex: bonus, current, max...)
+	combFo::combFo *combat; // Type of combat used. If not combat leave as none.
+	weapFo::weapFo *weapon; // General type of weapon used. If not combat leave as none.
+	rsrcFo::rsrcFo *resource;
 public:
 	std::queue<statFo::statFo> statistic;
 	std::queue<distFo::distFo> distance
