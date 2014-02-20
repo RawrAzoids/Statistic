@@ -14,6 +14,9 @@ namespace statFo // stat types
 	enum statFo {none, strength, stamina, intellect, agility, dexterity, armor, speed, luck, charisma, perception, weight, critcal, 
 		evade, block, charm, detect, hit, miss, distance, combat, damage, resource, modifier};
 }
+namespace magFo{
+	enum magFo {none, fire, ice, water, wind, earth, nature, electric, holy, dark, heal};
+}
 namespace numFo // Amount types
 {
 	enum numFo {none, base, bonus, total, current, percent, lower, upper, min, max, size};
@@ -28,19 +31,24 @@ namespace combFo // Damage and Defense Types
 }
 namespace attFo
 {
-	enum attFo {none, fire, ice, water, wind, earth, nature, electric, holy, dark, heal, pierce, smash, slash, };
+	enum attFo {none, pierce, smash, slash, injury};
 }
 namespace defFo
 {
 	enum defFo {none, block, parry, evade, reduct, hit, miss, absorb, invincible};
 }
-namespace rsrcFo // Resource Types (mana types 
+namespace rsrcFo // Resource Types
 {
 	enum rsrcFo {none, health, mana, energy};
 }
 namespace weapFo
 {
-	enum weapFo {none, };
+	enum weapFo {none, axe, mace, sword, dagger, staff, spear, halberd, gun, bow, crossbow, wand};
+}
+namespace armFo
+{
+	enum armFo {none, shield, trinket, ring, helmet, cape, leggings, torso, underwear, shirt, 
+	gloves, bracers, necklace};
 }
 
 const int STRING_LENGTH = 100;
