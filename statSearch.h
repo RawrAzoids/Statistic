@@ -1,7 +1,7 @@
-// File:			statSearch.h
-// Creator:			RawrAzoids
+// File:		statSearch.h
+// Creator:		RawrAzoids
 // DateCreated:		2/15/14
-// LastModified:	2/18/14
+// LastModified:	2/25/14
 // Description:		Creates a search object for any particular stat
 #ifndef STATSEARCH_H
 #define STATSEARCH_H
@@ -56,10 +56,8 @@ namespace armFo
 const int STRING_LENGTH = 100;
 struct statFusion
 {
-	int mSize, wSize, cSize;
+	int mSize;
 	magicFo::magicFo *fMagic;
-	weapFo::weapFo *fWeapon;
-	combFo::combFo *fCombat;
 };
 class statSearch // All enums to search for what type of stat you are talking about
 {
