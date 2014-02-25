@@ -1,7 +1,7 @@
 // File:			statModifier.cpp
 // Creator:			RawrAzoids
 // DateCreated:		2/16/14
-// LastModified:	2/18/14
+// LastModified:	2/25/14
 // Description:		implementation file
 #include "statModifier.h"
 statModifier::statModifier()
@@ -34,6 +34,13 @@ statModifier::statModifier(statModifier& m)
 }
 //Mutators
 // Private
+void statModifier::recalcTotal()
+{
+	if(enable)
+		total = statVal*percent + c;
+	else
+		total = false;
+}
 // Public
 void statModifier::setLock(bool b)
 {
@@ -48,7 +55,10 @@ bool statModifier::setPlusC(double n)
 {
 	bool temp = true;
 	if(!lock)
+	{
 		plusC =  n;
+		recalcTotal();	
+	}
 	else
 		temp = false;
 	return temp;
@@ -120,7 +130,7 @@ bool statModifier::clearModifier()
 	{
 		enable = perm = false;
 		search.clearStatSearch();
-		percent = amount = num = 0.0;
+		percent = statVal = plusC = total = 0.0;
 	}
 	else
 		temp = false;
