@@ -24,6 +24,7 @@ struct modGroup
 };
 struct statInfo
 {
+	statSearch search;
 	std::string name, description;
 	statInfo()
 	{
