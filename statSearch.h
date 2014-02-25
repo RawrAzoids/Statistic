@@ -31,7 +31,7 @@ namespace combFo // Damage and Defense Types
 {
 	enum combFo {none, melee, range, spell, chemical, fusion};
 }
-namespace attFo
+/*namespace attFo
 {
 	enum attFo {none, pierce, smash, slash, injury};
 }
@@ -51,7 +51,7 @@ namespace armFo
 {
 	enum armFo {none, socks, underwear, undershirt, trinket, ring, necklace, cape, helmet, leggings, body, 
 	gloves, bracers, shoulders};
-}
+}*/
 
 const int STRING_LENGTH = 100;
 struct statFusion
@@ -70,10 +70,8 @@ private:
 	combFo::combFo *combat; // Type of combat used. If not combat leave as none.
 	weapFo::weapFo *weapon; // General type of weapon used. If not combat leave as none.
 	rsrcFo::rsrcFo *resource;
+	statFusion fusion;
 public:
-	std::queue<statFo::statFo> statistic;
-	std::queue<distFo::distFo> distance
-	std::queue<magicFo::magicFo> magic
 	statSearch(); // Default constructor
 	statSearch(statFo::statFo s, distFo::distFo d, magicFo::magicFo m, numFo::numFo n, combFo::combFo c); // Non-default constructor
 	statSearch(statSearch &); // Copy constructror
@@ -92,7 +90,7 @@ public:
 	// Accesors
 	std::string getName();
 	std::string getDescription();
-	statSearch getStatSearch();
+	statSearch getSearchInfo();
 	std::string getStatisticList();
 	std::string getDistanceList();
 	std::string getAmountList();
