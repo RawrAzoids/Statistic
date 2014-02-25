@@ -22,10 +22,6 @@ struct modGroup
 		amount = 0.0;
 	}
 };
-struct amountGroup
-{
-	modGroup base, bonus, current, total;
-};
 struct statInfo
 {
 	std::string name, description;
@@ -49,7 +45,7 @@ class statFoundation
 {
 private:
 	statInfo info;
-	amountGroup amount;
+	modGroup base, bonus, current, total;
 	
 	void recalcModifier();
 	void recalcTotal();
