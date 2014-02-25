@@ -1,27 +1,23 @@
 // File:			statSearch.cpp
 // Creator:			RawrAzoids
 // DateCreated:		2/15/14
-// LastModified:	2/18/14
+// LastModified:	2/25/14
 // Description:		
 #include "statSearch.h"
 statSearch::statSearch()
 {
-	statistic = statFo::none;
-	distance = distFo::none;
-	magic = magicFo::none;
-	amount = numFo::none;
-	combat = combFo::none;
 	description.clear();
 }
-statSearch::statSearch(statFo::statFo s, distFo::distFo d, magicFo::magicFo m, numFo::numFo n, combFo::combFo c)
+/*statSearch::statSearch(statFo::statFo s, distFo::distFo d, magicFo::magicFo m, numFo::numFo n, combFo::combFo c)
 {
+	statistic = new
 	statistic = s;
 	distance = d;
 	magic = m;
 	amount = n;
 	combat = c;
 	description.clear();
-}
+}*/
 statSearch::statSearch(statSearch &s)
 {
 	amount = s.amount;
@@ -60,31 +56,42 @@ void statSearch::setStatSearch(statFo::statFo s, distFo::distFo d, magicFo::magi
 }
 void statSearch::setStatisticInfo(statFo::statFo s)
 {
+	if(statistic == NULL)
+		statistic[0]= new statFo::statFo[1];
 	statistic = s;
 }
 void statSearch::setDistanceInfo(distFo::distFo d)
 {
-	distance = d;
+	if(distance == NULL)
+		distance = new distFo::distFo[1];
+	distance[0] = d;
 }
 void statSearch::setMagicInfo(magicFo::magicFo m)
 {
-	magic = m;
+	if(magic == NULL)
+		magic = new magicFo::magicFo[1];
+	magic[0] = m;
 }
 void statSearch::setAmountInfo(numFo::numFo n)
 {
-	amount = n;
+	if(amount == NULL)
+		amount = new numFo::numFo[1];
+	amount[0] = n;
 }
 void statSearch::setCombatInfo(combFo::combFo c)
 {
-	combat = c;
+	if(combat == NULL)
+		combat = new combFo::combFo[1];
+	combat[0] = c;
 }
 void statSearch::clearStatSearch()
 {
-	statistic = statFo::none;
-	distance = distFo::none;
-	magic = magicFo::none;
-	amount = numFo::none;
-	combat = combFo::none;
+	delete statistic;
+	delete distance;
+	delete magic;
+	delete amount;
+	delete combat;
+	name.clear();
 	description.clear();
 }
 // Accesors
@@ -96,13 +103,14 @@ std::string statSearch::getDescription()
 {
 	return description;
 }
-statSearch statSearch::getStatSearch()
+statSearch statSearch::getSearchInfo()
 {
 	return *this;
 }
 std::string getStatisticList()
 {
-	return "none health mana energy strength stamina intellect agility dexterity armor speed luck charisma perception weight critcal evade block charm detect hit miss attack defense distance combat damage resistance";
+	return "none health mana energy strength stamina intellect agility dexterity armor speed luck charisma"
+	+ " perception weight critcal evade block charm detect hit miss attack defense distance combat damage resistance";
 }
 std::string getDistanceList()
 {
@@ -118,27 +126,42 @@ std::string getCombatList()
 }
 std::string getMagicList()
 {
-	return "none neutral fire water wind earth nature electric holy dark heal"
+	return "none neutral fire water wind earth nature electric holy dark heal";
 }
 statFo::statFo statSearch::getStatisticInfo()
 {
-	return statistic;
+	if(statistic != NULL)
+		return statistic[0];
+	else
+		return statFo::none;
 }
 distFo::distFo statSearch::getDistanceInfo()
 {
-	return distance;
+	if(distance != NULL)
+		return distance[0];
+	else
+		return distFo::none;
 }
 magicFo::magicFo statSearch::getMagicInfo()
 {
-	return magic;
+	if(magic != NULL)
+		return magic[0];
+	else
+		return magFo::none;
 }
 numFo::numFo statSearch::getAmountInfo()
 {
-	return amount;
+	if(amount != NULL)
+		return amount[0];
+	else
+		return numFo::none;
 }
 combFo::combFo statSearch::getCombatInfo()
 {
-	return combat;
+	if(combat != NULL)
+		return combat[0];
+	else
+		return combFo::none;
 }
 bool statSearch::similarStat(statSearch s)
 {
@@ -209,7 +232,8 @@ bool statSearch::similarAmount(statSearch s)
 // Overloaded operators
 statSearch statSearch::operator=(statSearch s)
 {
-	amount = s.amount;
+	if(s.amount != NULL)
+		setAmountInfo(s.amount[0]);
 	distance = s.distance;
 	statistic = s.statistic;
 	combat = s.combat;
