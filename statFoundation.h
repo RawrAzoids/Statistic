@@ -1,16 +1,17 @@
 // File:			statFoundation.h
 // Creator:			Clayton Hall
 // DateCreated:		2/15/14
-// LastModified:	2/19/14
+// LastModified:	2/25/14
 // Description:		Creates a stat object to allow functionality to a single stat.
 #ifndef STATFOUNDATION_H
 #define STATFOUNDATION_H
 #include <iostream>
 #include "statModifier.h"
 struct modGroup
-{						  
+{	
+	double amount;
 	int size;			  // size of modifiers
-	std::queue<std::queue<int>> similar;// keeps track of similar modifiers for calculations
+//	std::queue<std::queue<int>> similar;// keeps track of similar modifiers for calculations
 	bool enable;		// enable determines if modifiers are being used
 	statModifier *mod; // variables that will be stored in modifier
 	modGroup()
@@ -18,15 +19,12 @@ struct modGroup
 		size = 0;
 		enable  = false;
 		mod = new statModifier[size];
+		amount = 0.0;
 	}
 };
 struct amountGroup
 {
-	double base, bonus, current, modifier, total;
-	amountGroup()
-	{
-		base = bonus = total = current = modifier = 0.0;
-	}
+	modGroup base, bonus, current, total;
 };
 struct statInfo
 {
@@ -51,7 +49,6 @@ class statFoundation
 {
 private:
 	statInfo info;
-	modGroup modify;
 	amountGroup amount;
 	
 	void recalcModifier();
