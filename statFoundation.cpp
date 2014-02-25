@@ -164,13 +164,12 @@ void statFoundation::recalcSimilar()
 }
 void statFoundation::recalcTotal()
 {
-	amount.total = amount.base + amount.bonus + amount.modifier;
+	total.amount = base.amount + bonus.amount;
 }
 /* Public */
 // Constructors (integer values)
 statFoundation::stat()
 {
-	recalcSimilar();
 }
 statFoundation::stat(double base)
 {
@@ -196,14 +195,38 @@ bool statFoundation::addStatModifier(statModifier m)
 }
 bool statFoundation::addStatModifier(statSearch s, double n, double x, bool enable, bool perm, bool lock)
 {
-	bool temp;
+	bool temp= true;
 
-	if(
-	/*if(search == s)
+
+	
+	temp = false;
+	if(search.isSimilar(s))
 	{
 		temp = false;
-		std::cerr << "Cannot add an existing modifier. Use alterStatModifier()";
+		std::cerr << "Error. Modifier cannot modify a similar stat.";
 	}
+	else
+	{
+		if(s.getAmountInfo() == numFo::base)
+		{
+			
+		}
+		else if(s.getAmountInfo() == numFo::bonus)
+		{
+		
+		}
+		else if(s.getAmountInfo() == numFo::current)
+		{
+			
+		}
+		else if(s.getAmountInfo() == numFo::total)
+		{
+			
+		}
+		else
+			temp = false;
+	}
+	/*
 	else if(!search.isSimilar(s)) // Does not allow a stat to modify itself
 	{
 		recalcSimilar();
