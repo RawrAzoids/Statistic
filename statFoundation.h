@@ -1,7 +1,7 @@
-// File:			statFoundation.h
-// Creator:			Clayton Hall
+// File:		statFoundation.h
+// Creator:		Clayton Hall
 // DateCreated:		2/15/14
-// LastModified:	2/25/14
+// LastModified:	3/1/14
 // Description:		Creates a stat object to allow functionality to a single stat.
 #ifndef STATFOUNDATION_H
 #define STATFOUNDATION_H
@@ -46,7 +46,8 @@ class statFoundation
 {
 private:
 	statInfo info;
-	modGroup base, bonus, current, total;
+	modGroup base, bonus, total;	// base, bonus, and total will be more permanent 
+	modGroup current;		// current will be actively changed.
 	
 	void recalcModifier();
 	void recalcTotal();
@@ -60,9 +61,6 @@ public:
 	// Destructor
 
 	// Mutators
-	bool setBase(double);
-	bool setBonus(double);
-	bool setCurrent(double);
 	bool setName(std::string);
 	bool setDescription(std::string);
 	bool setEnable(bool);
