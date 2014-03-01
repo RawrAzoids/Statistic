@@ -1,9 +1,8 @@
-// File:			statFoundation.cpp
-// Creator:			Clayton Hall
+// File:		statFoundation.cpp
+// Creator:		Clayton Hall
 // DateCreated:		2/15/14
-// LastModified:	2/19/14
+// LastModified:	3/1/14
 // Description:		stat.h implementation file
-
 #include "statFoundation.h"
 /* Private */
 void statFoundation::recalcModifier()
@@ -47,120 +46,6 @@ void statFoundation::recalcSimilar()
 			skip[i] = true;
 		}
 	}
-/*	if(!modify.enable)
-	{
-		int simCount = 1, curIndex = 0;
-		bool *skip; // keeps track of indexes that can be skipped
-		skip = new bool[modify.size];
-		for(int i = 0; i < modify.similar.size; i++)
-			delete []modify.similar.n[i]; // deletes the old similar arrays
-		delete []modify.similar.n;
-		delete []modify.similar.index; // deletes old similar index array
-		delete []modify.similar.size2; // deletes old sizes of arrays
-		modify.similar.size = 0;
-		for(int i = 0; i < modify.size; i++) // parses through the modify array
-		{
-			if(!skip[i]) // skip flag
-			{
-				
-				for(int j = 1; j < modify.size; j++) // parses through the modify array
-				{
-					if(!skip[j] && modify.mod[curIndex].areSimilar(modify.mod[j])) // skip flag and counts similar objects
-						{
-							simCount++;
-							skip[j] = true;
-						}
-				}
-				if(simCount > 1) // similar flag
-				{
-					int *temp;
-					modify.similar.size++; // index array incremented
-					temp = new int[modify.similar.size-1]; // temp created to copy index array
-					for(int j = 0; j < modify.similar.size-1; j++)
-						temp[j] = modify.similar.index[j];
-					modify.similar.index = new int[modify.similar.size]; 
-					for(int j = 0; j < modify.similar.size-1; j++)
-						modify.similar.index[j] = temp[j];
-					modify.similar.index[modify.similar.size-1] = i; // copying new index
-					delete []temp; // deleting temp for rewrite
-					
-					for(int j = 0; j< modify.similar.size; j++)
-					{
-						modify.similar.size2[curIndex] = simCount;
-						temp = new int[modify.similar.size2[j]];
-						for(int k = 0; k < modify.similar.size2[j]])
-							temp = 
-						for(int k = 0; k < modify.similar.size2[j]; k++)
-						{
-							
-							if(modify.mod[curIndex].areSimilar(modify.mod[k])
-								modify.similar.n[j][k]
-	
-						}
-						for(int k = 1; k < simCount; k++)
-						{
-							if(modify.mod[curIndex].areSimilar(modify.mod[k])
-								
-						}
-							
-						modify.similar.size2[i]++; // incrementing the new array of array element i size
-						for(int j = 0; j < modify.similar.size2[i]-1; j++) // copying the old similar array
-							temp[j] = modify.similar.n[i][j];
-						delete []modify.similar.n[i];
-					
-						for(int j = 0; j < modify.similar.size; j++)
-							modify.similar.n[j] = new int[modify.similar.size2[j]];
-
-						modify.similar.n[i][modify.similar.index[i]] = new int*[modify.similar.size2[i]];
-					}
-					
-					simCount = 1; // resets similar count back to 1
-				}
-
-				for(int j = 0; j< simCount; j++)
-				{
-
-				}
-
-				for(int j = 0; j<modify.size; j++)
-					if(!skip[j])
-					{
-						curIndex = j;
-						j = modify.size;
-					}
-				skip[i] = true;
-			}
-			
-		}
-	}
-	for(int i = 0; i < modify.size; i++)
-	{
-			for(int j = i+1; j < modify.size; j++)
-				if(!skip[j])
-					if(modify.mod[i].areSimilar(modify.mod[j]))
-					{
-						similar[j] = true;
-						skip[j] = true;
-						count++;
-					}
-			indexes = new int[count];
-			for(int k=0; k<count; k++)
-				for(int j= i+1; j<modify.size; j++)
-					if(similar[j])
-						indexes[k] = j;
-			for(int j = 0; j<count; j++)
-			{
-				modify.similar[indexes[j]] = new int[count];
-				modify.similar[indexes[j]][j] = indexes[j];
-			}
-			for(int j = 0; j<modify.size;j++)
-				similar[j] = false;
-		count = 0;
-		delete []indexes;
-		}
-	}
-	delete []similar;
-	delete []skip;*/
 }
 void statFoundation::recalcTotal()
 {
@@ -171,15 +56,10 @@ void statFoundation::recalcTotal()
 statFoundation::stat()
 {
 }
-statFoundation::stat(double base)
-{
-	amount.base = amount.total = initial;
-	recalcSimilar();
-}
 // Mutators
-bool statFoundation::setBase(double n)
+/*bool statFoundation::setBase(double n)
 {
-	amount.base = n;
+	base.amount = n;
 }
 bool statFoundation::setBonus(double n)
 {
@@ -188,46 +68,22 @@ bool statFoundation::setBonus(double n)
 bool statFoundation::setCurrent(double n)
 {
 	amount.current = n;
-}
+}*/
 bool statFoundation::addStatModifier(statModifier m)
 {
 	return addStatModifier(m.getSearch(),m.getNumber(),m.getPercent(),m.getEnable(),m.getPermanent(),m.getLock());
 }
 bool statFoundation::addStatModifier(statSearch s, double n, double x, bool enable, bool perm, bool lock)
 {
-	bool temp= true;
-
-
+	bool temp;
 	
-	temp = false;
-	if(search.isSimilar(s))
+	// Needs to be implemented.
+	if(search == s)
 	{
-		temp = false;
-		std::cerr << "Error. Modifier cannot modify a similar stat.";
-	}
-	else
-	{
-		if(s.getAmountInfo() == numFo::base)
-		{
-			
-		}
-		else if(s.getAmountInfo() == numFo::bonus)
-		{
 		
-		}
-		else if(s.getAmountInfo() == numFo::current)
-		{
-			
-		}
-		else if(s.getAmountInfo() == numFo::total)
-		{
-			
-		}
-		else
-			temp = false;
+		
 	}
-	/*
-	else if(!search.isSimilar(s)) // Does not allow a stat to modify itself
+	/*else if(!search.isSimilar(s)) // Does not allow a stat to modify itself
 	{
 		recalcSimilar();
 		temp = true;
@@ -335,10 +191,6 @@ bool statFoundation::delStatModifier()
 
 	return temp;
 }
-bool statFoundation::alterModifier(statSearch search, double percent, bool inUse, bool isPerm); // alters a modifier based off search
-bool statFoundation::alterModifier(statSearch search, double percent);
-bool statFoundation::alterModifier(int n, double percent, bool inUse, bool isPerm); // alters a modifier based off array index
-bool statFoundation::alterModifier(int n, double percent);
 //Accesors
 statSearch statFoundation::getSearchStat();
 int statFoundation::getStartAmount();
