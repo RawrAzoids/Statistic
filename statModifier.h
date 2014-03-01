@@ -1,7 +1,7 @@
-// File:			statModifier.h
-// Creator:			RawrAzoids
+// File:		statModifier.h
+// Creator:		RawrAzoids
 // DateCreated:		2/16/14
-// LastModified:	2/18/14
+// LastModified:	3/1/14
 // Description:		Allows functionality to the modifiers for any particular stat
 #ifndef STATMODIFIER_H
 #define STATMODIFIER_H
@@ -9,6 +9,7 @@
 class statModifier // (in statSearch as statFo::modifier) 
 {
 private:
+	statSearch search;
 	bool enable; // Determines if being used or not (for pointers)
 	bool perm; // Cannot delete if perm = true (for pointers)
 	bool lock; // Cannot modify if lock = true (statVal can be modified in case of stat changes)
